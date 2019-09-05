@@ -59,6 +59,37 @@ export default new Router({
               name: 'lifeStyle',
               // component:() => import('./views/handle/bSuper/bSuper')
               component: resolve => require(['./views/lifeStyle/lifeStyle'], resolve)
+            },
+            {
+              // 脏器功能
+              path: 'zqgn',
+              name: 'zqgn',
+              component: resolve => require(['./views/zqgn/zqgn'], resolve)
+            },
+            { // 现存问题
+              path: 'xcwt',
+              name: 'xcwt',
+              component: resolve => require(['./views/xcwt/xcwt'], resolve)
+            },
+            {
+              path: 'ct',
+              name: 'ct',
+              component: resolve => require(['./views/ct/ct'], resolve)
+            },
+            {
+              path: 'zlnl',
+              name: 'zlnl',
+              component: resolve => require(['./views/zlnl/zlnl'], resolve)
+            },
+            {
+              path: 'SetHome',
+              name: 'SetHome',
+              component: resolve => require(['./views/set/SetHome'], resolve)
+            },
+            {
+              path: 'mkSet',
+              name: 'mkSet',
+              component: resolve => require(['./views/set/mkSet/mkSet'], resolve)
             }
           ]
         },
@@ -73,9 +104,15 @@ export default new Router({
           path: 'TjRegistration',
           // component:() => import('./views/TjRegistration/TjRegistration'),
           component: resolve => require(['./views/TjRegistration/TjRegistration'], resolve)
+        },
+        // 信息总检
+        {
+          name: 'inforZongjian',
+          path: 'inforZongjian',
+          component: resolve => require(['./views/inforZongjian/inforZongjian'], resolve)
         }
       ]
-    },
+    }
 
   ]
 })

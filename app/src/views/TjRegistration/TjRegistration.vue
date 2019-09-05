@@ -4,7 +4,7 @@
        <Row style="border-bottom: 1px solid #eeeeee;padding: 15px">
          <Col span="6">
            <span>条码号</span>
-           <Input placeholder="条码号" style="width: 160px;margin:0 15px;"></Input>
+           <Input placeholder="条码号" v-model='tmNumber' @on-enter="tiaomahaoEnter()" style="width: 160px;margin:0 15px;"></Input>
            <Button type="primary">新增</Button>
          </Col>
          <Col span="6">
@@ -150,7 +150,35 @@ export default {
           UploadStatus: ''
         }
       ],
-      demo: ''
+      tmNumber: ''
+    }
+  },
+  created () {
+    var _this = this
+    var code = ''
+    var lastTime, nextTime
+    var lastCode, nextCode
+    document.onkeydown = function (e) {
+      nextCode = e.which
+      nextTime = new Date().getTime()
+      if (lastCode != null && lastTime != null && nextTime - lastTime <= 30) {
+        code += String.fromCharCode(lastCode)
+      } else if (lastCode != null && lastTime != null && nextTime - lastTime > 100) {
+        code = ''
+      }
+      lastCode = nextCode
+      lastTime = nextTime
+      var key = window.event.keyCode
+      if (key == 13) {
+        console.log('条码号扫描成功')
+        _this.tmNumber = code
+      }
+    }
+  },
+  methods: {
+    tiaomahaoEnter () {
+      console.log(this.tmNumber)
+      this.$router.push({ path: '/home/inforCollecHome' })
     }
   }
 }

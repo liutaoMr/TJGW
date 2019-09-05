@@ -10,7 +10,7 @@
             </MenuItem>
           </Col>
           <Col span="14" style="text-align: center;line-height: 62px;">
-            <span style="color: white;font-size: 20px;">信息采集--体检登记</span>
+            <span @click="goback()">后退</span><span style="color: white;font-size: 20px;">信息采集--体检登记</span>
           </Col>
           <Col span="5" >
             <Menu mode="horizontal" :theme="theme1" active-name="1">
@@ -21,73 +21,100 @@
               <Submenu name="3">
               <template slot="title" >
                 <i class="iconfont icon-yonghu" style="font-size: 20px;"></i>
-                <span style="color: white;font-size: 20px;">用户名</span>
+                <span style="color: white;font-size: 20px;">{{user.real_name}}</span>
               </template>
                 <MenuItem name="3-1">修改密码</MenuItem>
                 <MenuItem name="3-2">修改信息</MenuItem>
-                <MenuItem name="3-3">时段分析</MenuItem>
+                <MenuItem name="3-3" @click.native="logOut()">退出系统</MenuItem>
             </Submenu>
             </Menu>
           </Col>
         </Row>
+        <Modal
+            v-model="modal1"
+            title="提示"
+            @on-cancel="cancel"
+            @on-ok="ok">
+            <p>确定退出系统？</p>
+        </Modal>
 
   </div>
 </template>
 
 <script>
-    export default {
-        name: "headNav",
-      data () {
-        return {
-          //全屏
-          fullscreen: false,
-          theme1: 'primary',
-          clinicOption:[
-            {
-              value: 'shiqiao',
-              label: '石桥镇卫生室'
-            },
-            {
-              value: 'heshan',
-              label: '河山镇卫生室'
-            },
-          ],
-          clinicSelected:'shiqiao',
-        }
-      },
-      methods:{
-        handleFullScreen(){
-          let element = document.documentElement;
-          if (this.fullscreen) {
-            if (document.exitFullscreen) {
-              document.exitFullscreen();
-            } else if (document.webkitCancelFullScreen) {
-              document.webkitCancelFullScreen();
-            } else if (document.mozCancelFullScreen) {
-              document.mozCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-              document.msExitFullscreen();
-            }
-          } else {
-            if (element.requestFullscreen) {
-              element.requestFullscreen();
-            } else if (element.webkitRequestFullScreen) {
-              element.webkitRequestFullScreen();
-            } else if (element.mozRequestFullScreen) {
-              element.mozRequestFullScreen();
-            } else if (element.msRequestFullscreen) {
-              // IE11
-              element.msRequestFullscreen();
-            }
-          }
-          this.fullscreen = !this.fullscreen;
+import { mapGetters, mapMutations } from 'vuex'
+export default {
+  name: 'headNav',
+  data () {
+    return {
+      modal1: false,
+      // 全屏
+      fullscreen: false,
+      theme1: 'primary',
+      clinicOption: [
+        {
+          value: '37021301',
+          label: '沧口社区卫生院'
         },
-      },
+        {
+          value: 'heshan',
+          label: '河山镇卫生室'
+        }
+      ],
+      clinicSelected: ''
     }
+  },
+  methods: {
+    handleFullScreen () {
+      let element = document.documentElement
+      if (this.fullscreen) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen()
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen()
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen()
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen()
+        }
+      } else {
+        if (element.requestFullscreen) {
+          element.requestFullscreen()
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen()
+        } else if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen()
+        } else if (element.msRequestFullscreen) {
+          // IE11
+          element.msRequestFullscreen()
+        }
+      }
+      this.fullscreen = !this.fullscreen
+    },
+    goback () {
+      this.$router.go(-1)
+    },
+    ok () {
+      this.$router.push('/login')
+    },
+    cancel () {
+
+    },
+    logOut () {
+      this.modal1 = true
+    }
+  },
+  computed: {
+    ...mapGetters(['user'])
+  }
+}
 </script>
 
 <style scoped>
   .ivu-menu-item{
     padding: 0 6px;
+  }
+  .ivu-modal-header-inner{
+    font-size: 20px!important;
   }
 </style>

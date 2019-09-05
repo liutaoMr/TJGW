@@ -286,16 +286,16 @@ export default {
       }
     },
     // 不饮酒清空值
-    yjplHandle() {
-     const that = this
-     if (that.yjpl == '0') {
-       that.$set(that.ryjl, 'data', '')
-       that.sfjj = ''
-       that.ksyjAge = ''
-       that.jjAge = ''
-       that.jynsfzj = ''
-       that.yjzl = []
-     }
+    yjplHandle () {
+      const that = this
+      if (that.yjpl == '0') {
+        that.$set(that.ryjl, 'data', '')
+        that.sfjj = ''
+        that.ksyjAge = ''
+        that.jjAge = ''
+        that.jynsfzj = ''
+        that.yjzl = []
+      }
     }
   },
   watch: {
@@ -344,13 +344,11 @@ table,tr,td{
 .selectWhite input[type="text"]{
     border-radius: 4px;
     display: inline-block;
-    width: 114px;
+    width: 134px;
     height: 31px;
     border: 1px solid #EEEEEE;
-    color: #067af2;
     font-weight: 600;
-    border-bottom: 1px solid #747577;
-    background-color: #fafafa;
+    background-color: white;
   }
   .onespan{
     margin-left:8px ;

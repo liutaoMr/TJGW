@@ -6,14 +6,15 @@
 </template>
 
 <script>
-    import HeadNav from "../../common/nav/headNav";
-    import PersonTypeNav from "../../common/personTypeNav/personTypeNav";
-    import heightWeight from "../heightWeight/heightWeight"
-    export default {
-        name: "handle",
-      components: {PersonTypeNav, HeadNav,heightWeight}
-    }
+import PersonTypeNav from '../../common/personTypeNav/personTypeNav'
+export default {
+  name: 'handle',
+  components: { PersonTypeNav }
+}
 </script>
 
 <style scoped>
+  .handleBox{
+    background: white;
+  }
 </style>

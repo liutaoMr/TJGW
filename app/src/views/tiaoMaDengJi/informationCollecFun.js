@@ -1,7 +1,5 @@
 //采集页读取方法
-export function Read() {
-  alert('读取')
-}
+
 export function Signature() {
   alert('签名')
 }

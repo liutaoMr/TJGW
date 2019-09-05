@@ -51,68 +51,65 @@
             <Button @click="cancel()" style="margin-left: 100px;">取消</Button>
           </FormItem>
         </Form>
-        <h1 style="color: black">这是条码号：{{paramsId}}</h1>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "handleChange",
-      props:["modalStatus","paramsId"],
-      data () {
-        return {
-          clinicOption:[
-            {
-              value: 'shiqiao',
-              label: '石桥镇卫生室'
-            },
-            {
-              value: 'heshan',
-              label: '河山镇卫生室'
-            },
-          ],
-          clinicSelected:'shiqiao',
-          inforCollec: {
-            Iphone:'17806277535',
-            dutyDoctor:'杨永信',
-            nowLocation:'山东省青岛市李沧区银海综合大厦',
-            emergencyName:'程奕迅',
-            emergencyPhone:'17806277532',
-            PersonnelType:["低保"],
-          },
-          PersonnelTypeConfig:["低保","脑卒中","普通人","残疾人","重精","糖尿病","糖尿病高危",
-            "60-65岁","贫困","高血压","冠心病","高血压高危",
-            "五保","老年人","计生特殊人群"],
+export default {
+  name: 'handleChange',
+  props: ['modalStatus', 'paramsId'],
+  data () {
+    return {
+      clinicOption: [
+        {
+          value: 'shiqiao',
+          label: '石桥镇卫生室'
+        },
+        {
+          value: 'heshan',
+          label: '河山镇卫生室'
         }
+      ],
+      clinicSelected: 'shiqiao',
+      inforCollec: {
+        Iphone: '17806277535',
+        dutyDoctor: '杨永信',
+        nowLocation: '山东省青岛市李沧区银海综合大厦',
+        emergencyName: '程奕迅',
+        emergencyPhone: '17806277532',
+        PersonnelType: ['低保']
       },
-      methods: {
-        //模态点击消失
-        handleMask(){
-          this.$emit('updateModalStatus',false)
-        },
-        close(){
-          this.$emit('updateModalStatus',false)
-        },
-        save(){
-          this.$emit('updateModalStatus',false)
-          //在这里弹窗是否确定
-        },
-        cancel(){
-          this.$emit('updateModalStatus',false)
-
-        },
-        handleEdit (row) {
-          console.log(row)
-          this.$set(row, '$isEdit', true)
-
-        },
-        handleSave (row) {
-          this.$set(row, '$isEdit', false)
-        }
-      }
+      PersonnelTypeConfig: ['低保', '脑卒中', '普通人', '残疾人', '重精', '糖尿病', '糖尿病高危',
+        '60-65岁', '贫困', '高血压', '冠心病', '高血压高危',
+        '五保', '老年人', '计生特殊人群']
     }
+  },
+  methods: {
+    // 模态点击消失
+    handleMask () {
+      this.$emit('updateModalStatus', false)
+    },
+    close () {
+      this.$emit('updateModalStatus', false)
+    },
+    save () {
+      this.$emit('updateModalStatus', false)
+      // 在这里弹窗是否确定
+    },
+    cancel () {
+      this.$emit('updateModalStatus', false)
+    },
+    handleEdit (row) {
+      console.log(row)
+      this.$set(row, '$isEdit', true)
+    },
+    handleSave (row) {
+      this.$set(row, '$isEdit', false)
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -149,8 +146,7 @@
     background:linear-gradient(90deg,rgba(6,169,237,1) 0%,rgba(46,132,240,1) 100%);
   }
   .close{
-    float: right;
-    margin-right: 5px;
+    margin-left:536px;
     line-height: 40px;
   }
   .content{

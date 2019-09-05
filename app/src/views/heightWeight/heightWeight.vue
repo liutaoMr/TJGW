@@ -1,5 +1,5 @@
 <template>
-  <div class="cardBox">
+ <div class="cardBox">
   <Card class="Card">
     <div class="content">
       <div style="margin-bottom: 10px;font-size: 18px;font-weight: 700">
@@ -71,53 +71,52 @@
 </template>
 
 <script>
-    export default {
-        name: "heightWeight",
-      data(){
-          return{
-            height:'182',
-            weight:'72',
-            waistline:'70',
-            temperature:'16',
-            BMI:'',
-            port:'8080'
-          }
-      },
-      methods:{
-        heightWeightSave(){
-          var _this = this;
-          if(_this.height==''){
-            _this.$refs.height.focus();
-            _this.$Message.warning('身高不能为空');
-          }else if(_this.weight==''){
-            _this.$refs.weight.focus();
-            _this.$Message.warning('体重不能为空');
-          }else if(_this.waistline==''){
-            _this.$refs.waistline.focus();
-            _this.$Message.warning('腰围不能为空');
-          }else if(_this.temperature==''){
-            _this.$refs.temperature.focus();
-            _this.$Message.warning('体温不能为空不能为空');
-          }
-
-        },
-        heightWeightMeasure(){
-          alert('身高体重测量')
-        }
-      },
-      computed:{
-        //根据身高体重生成BMI
-        bmiCompute:function () {
-              const that =this;
-              var height = that.height/100;
-              var weight = that.weight;
-              var bmiCompute = weight/(height*height);
-              bmiCompute = bmiCompute.toFixed(2)
-              that.BMI = bmiCompute
-              return bmiCompute
-        },
-      }
+export default {
+  name: 'heightWeight',
+  data () {
+    return {
+      height: '182',
+      weight: '72',
+      waistline: '70',
+      temperature: '16',
+      BMI: '',
+      port: '8080'
     }
+  },
+  methods: {
+    heightWeightSave () {
+      var _this = this
+      if (_this.height == '') {
+        _this.$refs.height.focus()
+        _this.$Message.warning('身高不能为空')
+      } else if (_this.weight == '') {
+        _this.$refs.weight.focus()
+        _this.$Message.warning('体重不能为空')
+      } else if (_this.waistline == '') {
+        _this.$refs.waistline.focus()
+        _this.$Message.warning('腰围不能为空')
+      } else if (_this.temperature == '') {
+        _this.$refs.temperature.focus()
+        _this.$Message.warning('体温不能为空不能为空')
+      }
+    },
+    heightWeightMeasure () {
+      alert('身高体重测量')
+    }
+  },
+  computed: {
+    // 根据身高体重生成BMI
+    bmiCompute: function () {
+      const that = this
+      var height = that.height / 100
+      var weight = that.weight
+      var bmiCompute = weight / (height * height)
+      bmiCompute = bmiCompute.toFixed(2)
+      that.BMI = bmiCompute
+      return bmiCompute
+    }
+  }
+}
 </script>
 
 <style scoped>
